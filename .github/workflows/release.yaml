@@ -35,3 +35,7 @@ jobs:
         env:
           REGISTRY1_USERNAME: ${{ secrets.REGISTRY1_USERNAME }}
           REGISTRY1_PASSWORD: ${{ secrets.REGISTRY1_PASSWORD }}
+
+      - name: Publish
+        run: |
+          zarf package publish zarf-init-amd64-v0.32.1.tar.zst oci://ghcr.io/radiusmethod/packages
