@@ -45,4 +45,4 @@ jobs:
 
       - name: Publish
         run: |
-          zarf package publish build/zarf-init-amd64-v0.32.1.tar.zst oci://ghcr.io/radiusmethod/packages
+          zarf package publish build/zarf-init-amd64-v0.32.1.tar.zst oci://ghcr.io/radiusmethod/zarf-init-bigbang
