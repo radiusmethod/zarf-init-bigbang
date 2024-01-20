@@ -28,5 +28,6 @@ jobs:
           cat checksums.txt | grep "zarf_v0.32.1_Linux_amd64$" | sha256sum --check
           if [ $? -gt 0 ]; then exit $?; fi
           mv zarf_v0.32.1_Linux_amd64 /usr/local/bin/zarf
+          chmod +x /usr/local/bin/zarf
           git clone https://github.com/defenseunicorns/zarf
           make build
