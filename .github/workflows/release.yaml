@@ -30,4 +30,5 @@ jobs:
           mv zarf_v0.32.1_Linux_amd64 /usr/local/bin/zarf
           chmod +x /usr/local/bin/zarf
           git clone https://github.com/defenseunicorns/zarf
+          set +o history && echo ${REGISTRY1_PASSWORD} | zarf tools registry login registry1.dso.mil --username ${REGISTRY1_USERNAME} --password-stdin || set -o history
           make build
