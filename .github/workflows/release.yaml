@@ -1,0 +1,26 @@
+name: Publish Zarf Init Package On Tag
+
+permissions:
+  contents: read
+
+on:
+  push:
+    branches:
+      - main
+#    tags:
+#      - "v*"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: 0
+
+      - name: Fetch the correct Zarf version
+        run: |
+          curl -O https://github.com/defenseunicorns/zarf/releases/download/v0.32.1/zarf_v0.32.1_Linux_amd64
