@@ -24,3 +24,6 @@ jobs:
       - name: Fetch the correct Zarf version
         run: |
           curl -O https://github.com/defenseunicorns/zarf/releases/download/v0.32.1/zarf_v0.32.1_Linux_amd64
+          cat checksums.txt | grep "zarf_v0.32.1_Linux_amd64$" | sha256sum --check
+          if [ $? > 0 ]; then exit $? fi
+          mv zarf_v0.32.1_Linux_amd64 zarf
