@@ -9,10 +9,11 @@ REGISTRY_VERSION:="2.8.3"
 ZARF_VERSION:="0.32.1"
 
 ZARF_DIR:="zarf"
+BUILD_DIR:="build"
 
 build:
 	cd $(ZARF_DIR) && \
-	zarf package create --flavor=git-server -o build -a $(ARCH) --confirm . \
+	zarf package create --flavor=git-server -o $(BUILD_DIR) -a $(ARCH) --confirm . \
 	--set REGISTRY_IMAGE_DOMAIN="registry1.dso.mil/" \
 	--set REGISTRY_IMAGE="ironbank/opensource/docker/registry-v2" \
 	--set REGISTRY_IMAGE_TAG=$(REGISTRY_VERSION) \

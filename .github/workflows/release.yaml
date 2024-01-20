@@ -31,11 +31,11 @@ jobs:
           chmod +x /usr/local/bin/zarf
           git clone https://github.com/defenseunicorns/zarf
           set +o history && echo ${REGISTRY1_PASSWORD} | zarf tools registry login registry1.dso.mil --username ${REGISTRY1_USERNAME} --password-stdin || set -o history
-          make build
+          make BUILD_DIR=../build build
         env:
           REGISTRY1_USERNAME: ${{ secrets.REGISTRY1_USERNAME }}
           REGISTRY1_PASSWORD: ${{ secrets.REGISTRY1_PASSWORD }}
 
       - name: Publish
         run: |
-          zarf package publish zarf-init-amd64-v0.32.1.tar.zst oci://ghcr.io/radiusmethod/packages
+          zarf package publish build/zarf-init-amd64-v0.32.1.tar.zst oci://ghcr.io/radiusmethod/packages
