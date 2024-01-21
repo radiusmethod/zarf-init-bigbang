@@ -37,11 +37,11 @@ jobs:
 
       - name: Fetch the correct Zarf version
         run: |
-          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v$ZARF_VERSION/zarf_v$ZARF_VERSION_Linux_amd64
-          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v$ZARF_VERSION/checksums.txt
-          cat checksums.txt | grep "zarf_v$ZARF_VERSION_Linux_amd64$" | sha256sum --check
+          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/zarf_v${ZARF_VERSION}_Linux_amd64
+          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/checksums.txt
+          cat checksums.txt | grep "zarf_v${ZARF_VERSION}_Linux_amd64$" | sha256sum --check
           if [ $? -gt 0 ]; then exit $?; fi
-          mv zarf_v0.32.1_Linux_amd64 /usr/local/bin/zarf
+          mv zarf_v${ZARF_VERSION}_Linux_amd64 /usr/local/bin/zarf
           chmod +x /usr/local/bin/zarf
           git clone https://github.com/defenseunicorns/zarf
           set +o history && echo ${REGISTRY1_PASSWORD} | zarf tools registry login registry1.dso.mil --username ${REGISTRY1_USERNAME} --password-stdin || set -o history
@@ -52,4 +52,4 @@ jobs:
 
       - name: Publish
         run: |
-          zarf package publish build/zarf-init-amd64-v$ZARF_VERSION.tar.zst oci://ghcr.io/radiusmethod/zarf-init-bigbang
+          zarf package publish build/zarf-init-amd64-v${ZARF_VERSION}.tar.zst oci://ghcr.io/radiusmethod/zarf-init-bigbang
