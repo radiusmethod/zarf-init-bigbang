@@ -10,6 +10,7 @@ ZARF_VERSION:="0.32.1"
 
 ZARF_DIR:="zarf"
 BUILD_DIR:="build"
+KMS_ALIAS:="zarf-init-bigbang"
 
 build:
 	cd $(ZARF_DIR) && \
@@ -21,3 +22,6 @@ build:
 	--set AGENT_IMAGE="ironbank/opensource/defenseunicorns/zarf/zarf-agent" \
 	--set AGENT_IMAGE_TAG=v$(ZARF_VERSION) \
 	--set GITEA_IMAGE=registry1.dso.mil/ironbank/opensource/go-gitea/gitea:v$(GITEA_VERSION)
+
+generate-key-pair:
+	cosign generate-key-pair --kms awskms:///alias/$(KMS_ALIAS)
