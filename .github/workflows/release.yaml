@@ -10,6 +10,10 @@ on:
 #    tags:
 #      - "v*"
 
+env:
+  # renovate: depName=defenseunicorns/zarf
+  ZARF_VERSION: 0.32.1
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,9 +37,9 @@ jobs:
 
       - name: Fetch the correct Zarf version
         run: |
-          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v0.32.1/zarf_v0.32.1_Linux_amd64
-          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v0.32.1/checksums.txt
-          cat checksums.txt | grep "zarf_v0.32.1_Linux_amd64$" | sha256sum --check
+          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v$ZARF_VERSION/zarf_v$ZARF_VERSION_Linux_amd64
+          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v$ZARF_VERSION/checksums.txt
+          cat checksums.txt | grep "zarf_v$ZARF_VERSION_Linux_amd64$" | sha256sum --check
           if [ $? -gt 0 ]; then exit $?; fi
           mv zarf_v0.32.1_Linux_amd64 /usr/local/bin/zarf
           chmod +x /usr/local/bin/zarf
@@ -48,4 +52,4 @@ jobs:
 
       - name: Publish
         run: |
-          zarf package publish build/zarf-init-amd64-v0.32.1.tar.zst oci://ghcr.io/radiusmethod/zarf-init-bigbang
+          zarf package publish build/zarf-init-amd64-v$ZARF_VERSION.tar.zst oci://ghcr.io/radiusmethod/zarf-init-bigbang
