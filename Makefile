@@ -13,15 +13,7 @@ BUILD_DIR:="build"
 KMS_ALIAS:="zarf-init-bigbang"
 
 build:
-	cd $(ZARF_DIR) && \
-	zarf package create -o $(BUILD_DIR) -a $(ARCH) --confirm . \
-	--set REGISTRY_IMAGE_DOMAIN="registry1.dso.mil/" \
-	--set REGISTRY_IMAGE="ironbank/opensource/docker/registry-v2" \
-	--set REGISTRY_IMAGE_TAG=$(REGISTRY_VERSION) \
-	--set AGENT_IMAGE_DOMAIN="registry1.dso.mil/" \
-	--set AGENT_IMAGE="ironbank/opensource/defenseunicorns/zarf/zarf-agent" \
-	--set AGENT_IMAGE_TAG=v$(ZARF_VERSION) \
-	--set GITEA_IMAGE=registry1.dso.mil/ironbank/opensource/go-gitea/gitea:v$(GITEA_VERSION)
+	zarf package create -o $(BUILD_DIR) -a $(ARCH) --confirm .
 
 generate-key-pair:
 	cosign generate-key-pair --kms awskms:///alias/$(KMS_ALIAS)
