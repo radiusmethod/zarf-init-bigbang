@@ -23,6 +23,17 @@
       ],
       "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
       "datasourceTemplate": "github-tags"
+    },
+    {
+      "fileMatch": [
+        "zarf-config.toml"
+      ],
+      "matchStringsStrategy": "recursive",
+      "matchStrings": [
+        "# renovate: depName=(?<depName>.+?)(?: extractVersion=(?<extractVersion>.+?))?\\s*.*?_(image_tag|server_version) = '?(?<currentValue>.+?)'?\\s"
+      ],
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
+      "datasourceTemplate": "github-tags"
     }
   ]
 }
