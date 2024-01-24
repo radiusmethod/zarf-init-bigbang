@@ -55,7 +55,7 @@ jobs:
       - name: "Sign and Publish the image"
         run: |
           zarf package publish build/zarf-init-amd64-v${ZARF_VERSION}.tar.zst oci://ghcr.io/radiusmethod/zarf-init-bigbang --signing-key awskms:///alias/zarf-init-bigbang
-          env:
-            AWS_REGION: ${{ secrets.AWS_REGION }}
-            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_GOV }}
-            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_GOV }}
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_GOV }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_GOV }}
