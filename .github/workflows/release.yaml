@@ -1,0 +1,59 @@
+name: Publish Zarf Init Package On Tag
+
+permissions:
+  contents: read
+
+on:
+  push:
+    tags:
+      - "v*"
+
+env:
+  # renovate: depName=defenseunicorns/zarf
+  ZARF_VERSION: 0.32.1
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
+        with:
+          fetch-depth: 0
+
+      - name: "Login to GHCR"
+        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ github.token }}
+
+      - name: "Install tools"
+        run: |
+          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/zarf_v${ZARF_VERSION}_Linux_amd64
+          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/checksums.txt
+          cat checksums.txt | grep "zarf_v${ZARF_VERSION}_Linux_amd64$" | sha256sum --check
+          if [ $? -gt 0 ]; then exit $?; fi
+          mv zarf_v${ZARF_VERSION}_Linux_amd64 /usr/local/bin/zarf
+          chmod +x /usr/local/bin/zarf
+
+      - name: "Build the image"
+        run: |          
+          set +o history && echo ${REGISTRY1_PASSWORD} | zarf tools registry login registry1.dso.mil --username ${REGISTRY1_USERNAME} --password-stdin || set -o history
+          make build
+        env:
+          REGISTRY1_USERNAME: ${{ secrets.REGISTRY1_USERNAME }}
+          REGISTRY1_PASSWORD: ${{ secrets.REGISTRY1_PASSWORD }}
+
+      - name: "Sign and Publish the image"
+        run: |
+          zarf package publish build/zarf-init-amd64-v${ZARF_VERSION}.tar.zst oci://ghcr.io/radiusmethod/zarf-init-bigbang --signing-key awskms:///alias/zarf-init-bigbang
+        env:
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_GOV }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_GOV }}

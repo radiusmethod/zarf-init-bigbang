@@ -1,0 +1,39 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "automerge": false,
+  "gitLabAutomerge": false,
+  "configWarningReuseIssue": false,
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Renovate: Upgrade Dependencies",
+  "draftPR": true,
+  "labels": [],
+  "regexManagers": [
+    {
+      "fileMatch": [
+        "(^|/)Makefile$",
+        ".gitlab-ci.yml",
+        ".github/workflows/*.yaml"
+      ],
+      "matchStringsStrategy": "recursive",
+      "matchStrings": [
+        "# renovate: depName=(?<depName>.+?)(?: extractVersion=(?<extractVersion>.+?))?\\s*.*?_VERSION:=\"?(?<currentValue>.+?)\"?\\s"
+      ],
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
+      "datasourceTemplate": "github-tags"
+    },
+    {
+      "fileMatch": [
+        "zarf-config.toml"
+      ],
+      "matchStringsStrategy": "recursive",
+      "matchStrings": [
+        "# renovate: depName=(?<depName>.+?)(?: extractVersion=(?<extractVersion>.+?))?\\s*.*?_(image_tag|server_version) = '?(?<currentValue>.+?)'?\\s"
+      ],
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
+      "datasourceTemplate": "github-tags"
+    }
+  ]
+}
