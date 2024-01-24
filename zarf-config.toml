@@ -18,4 +18,4 @@ registry_image = 'ironbank/opensource/docker/registry-v2'
 
 # The image reference to use for the optional git-server Zarf deploys
 # renovate: depName=go-gitea/gitea
-gitea_image = 'registry1.dso.mil/ironbank/opensource/go-gitea/gitea:1.21.4'
+gitea_image = 'registry1.dso.mil/ironbank/opensource/go-gitea/gitea:1.21.3'
