@@ -41,8 +41,6 @@ jobs:
         run: |
           curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/zarf_v${ZARF_VERSION}_Linux_amd64
           curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/checksums.txt
-#          curl -LO https://github.com/sigstore/cosign/releases/download/v${COSIGN_VERSION}/cosign_${COSIGN_VERSION}_amd64.deb
-#          sudo dpkg -i cosign_${COSIGN_VERSION}_amd64.deb
           cat checksums.txt | grep "zarf_v${ZARF_VERSION}_Linux_amd64$" | sha256sum --check
           if [ $? -gt 0 ]; then exit $?; fi
           mv zarf_v${ZARF_VERSION}_Linux_amd64 /usr/local/bin/zarf
@@ -56,14 +54,6 @@ jobs:
         env:
           REGISTRY1_USERNAME: ${{ secrets.REGISTRY1_USERNAME }}
           REGISTRY1_PASSWORD: ${{ secrets.REGISTRY1_PASSWORD }}
-
-#      - name: "Sign the Image"
-#        run: |
-#          cosign sign --key awskms:///alias/zarf-init-bigbang -a release-engineer=https://github.com/${{ github.actor }} -a version=$GITHUB_REF_NAME oci://ghcr.io/radiusmethod/zarf-init-bigbang@$ZARF_AGENT_IMAGE_DIGEST -y
-#        env:
-#          AWS_REGION: ${{ secrets.AWS_REGION }}
-#          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_GOV }}
-#          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_GOV }}
 
       - name: "Sign and Publish the image"
         run: |
