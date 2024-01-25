@@ -25,13 +25,6 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: "Login to GHCR"
-        uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ github.token }}
-
       - name: "Install tools"
         run: |
           curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/zarf_v${ZARF_VERSION}_Linux_amd64
@@ -40,3 +33,11 @@ jobs:
           if [ $? -gt 0 ]; then exit $?; fi
           mv zarf_v${ZARF_VERSION}_Linux_amd64 /usr/local/bin/zarf
           chmod +x /usr/local/bin/zarf
+
+      - name: "Build the image"
+        run: |
+          set +o history && echo ${REGISTRY1_PASSWORD} | zarf tools registry login registry1.dso.mil --username ${REGISTRY1_USERNAME} --password-stdin || set -o history
+          make build
+        env:
+          REGISTRY1_USERNAME: ${{ secrets.REGISTRY1_USERNAME }}
+          REGISTRY1_PASSWORD: ${{ secrets.REGISTRY1_PASSWORD }}
