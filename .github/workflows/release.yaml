@@ -5,8 +5,7 @@ permissions:
 
 on:
   push:
-    tags:
-      - "v*"
+    branches: [ 'main' ]
 
 env:
   # renovate: depName=defenseunicorns/zarf
