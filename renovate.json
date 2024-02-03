@@ -41,7 +41,7 @@
       "matchStrings": [
         "# renovate: depName=(?<depName>.+?)(?: extractVersion=(?<extractVersion>.+?))?\\s.*oci:*.*?:(?<currentValue>.+?)?\\s"
       ],
-      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^v?(?<version>.+)${{/if}}",
+      "extractVersionTemplate": "{{#if extractVersion}}{{{extractVersion}}}{{else}}^(?<version>.+)${{/if}}",
       "datasourceTemplate": "github-tags"
     }
   ]
