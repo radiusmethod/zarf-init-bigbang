@@ -7,7 +7,4 @@ runs:
     - run: |
         set +o history && echo ${REGISTRY1_PASSWORD} | zarf tools registry login registry1.dso.mil --username ${REGISTRY1_USERNAME} --password-stdin || set -o history
         make build
-      env:
-        REGISTRY1_USERNAME: ${{ secrets.REGISTRY1_USERNAME }}
-        REGISTRY1_PASSWORD: ${{ secrets.REGISTRY1_PASSWORD }}
       shell: bash
