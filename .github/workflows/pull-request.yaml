@@ -8,7 +8,7 @@ on:
     branches: [ 'main' ]
 
 env:
-# renovate: depName=defenseunicorns/zarf
+  # renovate: depName=defenseunicorns/zarf
   ZARF_VERSION: 0.32.1
 
 jobs:
@@ -25,19 +25,8 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: "Install tools"
-        run: |
-          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/zarf_v${ZARF_VERSION}_Linux_amd64
-          curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/checksums.txt
-          cat checksums.txt | grep "zarf_v${ZARF_VERSION}_Linux_amd64$" | sha256sum --check
-          if [ $? -gt 0 ]; then exit $?; fi
-          mv zarf_v${ZARF_VERSION}_Linux_amd64 /usr/local/bin/zarf
-          chmod +x /usr/local/bin/zarf
+      - name: Install tools
+        uses: ./.github/actions/install-tools
 
-      - name: "Build the image"
-        run: |
-          set +o history && echo ${REGISTRY1_PASSWORD} | zarf tools registry login registry1.dso.mil --username ${REGISTRY1_USERNAME} --password-stdin || set -o history
-          make build
-        env:
-          REGISTRY1_USERNAME: ${{ secrets.REGISTRY1_USERNAME }}
-          REGISTRY1_PASSWORD: ${{ secrets.REGISTRY1_PASSWORD }}
+      - name: Build image
+        uses: ./.github/actions/build-image
