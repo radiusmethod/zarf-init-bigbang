@@ -14,8 +14,7 @@
     {
       "fileMatch": [
         "(^|/)Makefile$",
-        ".gitlab-ci.yml",
-        ".github/workflows/*.yaml"
+        "\\.github/workflows/.*yaml"
       ],
       "matchStringsStrategy": "recursive",
       "matchStrings": [
