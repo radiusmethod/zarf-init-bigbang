@@ -1,0 +1,10 @@
+name: build-image
+description: "Build image"
+
+runs:
+  using: composite
+  steps:
+    - run: |
+        set +o history && echo ${REGISTRY1_PASSWORD} | zarf tools registry login registry1.dso.mil --username ${REGISTRY1_USERNAME} --password-stdin || set -o history
+        make build
+      shell: bash
