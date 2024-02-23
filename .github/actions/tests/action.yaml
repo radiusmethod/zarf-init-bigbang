@@ -1,0 +1,9 @@
+name: install-tools
+description: "Run Tests"
+
+runs:
+  using: composite
+  steps:
+    - run: |
+        zarf dev lint
+      shell: bash
