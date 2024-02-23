@@ -28,6 +28,9 @@ jobs:
       - name: Install tools
         uses: ./.github/actions/install-tools
 
+      - name: Lint
+        uses: ./.github/actions/tests
+
       - name: Build image
         uses: ./.github/actions/build-image
         env:
