@@ -4,7 +4,7 @@ ARCH:=amd64
 # renovate: depName=defenseunicorns/zarf
 ZARF_VERSION:="0.33.0"
 # renovate: depName=go-gitea/gitea
-GITEA_VERSION:="1.21.10"
+GITEA_VERSION:="1.21.11"
 # renovate: depName=distribution/distribution
 REGISTRY_VERSION:="2.8.3"
 
