@@ -8,7 +8,7 @@
   "configWarningReuseIssue": false,
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "Renovate: Upgrade Dependencies",
-  "draftPR": true,
+  "draftPR": false,
   "labels": [],
   "regexManagers": [
     {
