@@ -7,33 +7,33 @@ components:
   - name: k3s
     import:
       # renovate: depName=defenseunicorns/zarf
-      url: oci://ghcr.io/defenseunicorns/packages/init:v0.35.0
+      url: oci://ghcr.io/defenseunicorns/packages/init:v0.36.0
 
   - name: zarf-injector
     required: true
     import:
       # renovate: depName=defenseunicorns/zarf
-      url: oci://ghcr.io/defenseunicorns/packages/init:v0.35.0
+      url: oci://ghcr.io/defenseunicorns/packages/init:v0.36.0
 
   - name: zarf-seed-registry
     required: true
     import:
       # renovate: depName=defenseunicorns/zarf
-      url: oci://ghcr.io/defenseunicorns/packages/init:v0.35.0
+      url: oci://ghcr.io/defenseunicorns/packages/init:v0.36.0
 
   - name: zarf-registry
     required: true
     import:
       # renovate: depName=defenseunicorns/zarf
-      url: oci://ghcr.io/defenseunicorns/packages/init:v0.35.0
+      url: oci://ghcr.io/defenseunicorns/packages/init:v0.36.0
 
   - name: zarf-agent
     required: true
     import:
       # renovate: depName=defenseunicorns/zarf
-      url: oci://ghcr.io/defenseunicorns/packages/init:v0.35.0
+      url: oci://ghcr.io/defenseunicorns/packages/init:v0.36.0
 
   - name: git-server
     import:
       # renovate: depName=defenseunicorns/zarf
-      url: oci://ghcr.io/defenseunicorns/packages/init:v0.35.0
+      url: oci://ghcr.io/defenseunicorns/packages/init:v0.36.0
