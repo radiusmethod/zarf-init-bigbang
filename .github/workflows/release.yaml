@@ -9,7 +9,7 @@ on:
 
 env:
   # renovate: depName=defenseunicorns/zarf
-  ZARF_VERSION: 0.36.0
+  ZARF_VERSION: 0.36.1
 
 jobs:
   build:
