@@ -1,7 +1,7 @@
 .PHONY: build
 
 ARCH:=amd64
-# renovate: depName=defenseunicorns/zarf
+# renovate: depName=zarf-dev/zarf
 ZARF_VERSION:="0.36.1"
 # renovate: depName=go-gitea/gitea
 GITEA_VERSION:="1.22.1"

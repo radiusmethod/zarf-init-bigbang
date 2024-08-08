@@ -5,8 +5,8 @@ runs:
   using: composite
   steps:
     - run: |
-        curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/zarf_v${ZARF_VERSION}_Linux_amd64
-        curl -LO https://github.com/defenseunicorns/zarf/releases/download/v${ZARF_VERSION}/checksums.txt
+        curl -LO https://github.com/zarf-dev/zarf/releases/download/v${ZARF_VERSION}/zarf_v${ZARF_VERSION}_Linux_amd64
+        curl -LO https://github.com/zarf-dev/zarf/releases/download/v${ZARF_VERSION}/checksums.txt
         cat checksums.txt | grep "zarf_v${ZARF_VERSION}_Linux_amd64$" | sha256sum --check
         if [ $? -gt 0 ]; then exit $?; fi
         mv zarf_v${ZARF_VERSION}_Linux_amd64 /usr/local/bin/zarf
