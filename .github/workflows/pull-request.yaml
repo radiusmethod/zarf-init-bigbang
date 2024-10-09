@@ -5,11 +5,11 @@ permissions:
 
 on:
   pull_request:
-    branches: [ 'main' ]
+    branches: ["main"]
 
 env:
   # renovate: depName=zarf-dev/zarf
-  ZARF_VERSION: 0.38.3
+  ZARF_VERSION: 0.41.0
 
 jobs:
   build:
