@@ -20,8 +20,8 @@ build:
 	--set AGENT_IMAGE_DOMAIN="registry1.dso.mil/" \
 	--set AGENT_IMAGE="ironbank/opensource/defenseunicorns/zarf/zarf-agent" \
 	--set AGENT_IMAGE_TAG=v$(ZARF_VERSION) \
-	--set INJECTOR_VERSION="2023-08-02" \
-	--set INJECTOR_AMD64_SHASUM="91de0768855ee2606a4f85a92bb480ff3a14ca205fd8d05eb397c18e15aa0247" \
+	--set INJECTOR_VERSION="2024-07-22" \
+	--set INJECTOR_AMD64_SHASUM="8463bfd66930a4b26c665b51f25e8a32ed5948068bae49987013c89173394478" \
 	--set GITEA_IMAGE=registry1.dso.mil/ironbank/opensource/go-gitea/gitea:v$(GITEA_VERSION)
 
 generate-key-pair:
