@@ -7,33 +7,33 @@ components:
   - name: k3s
     import:
       # renovate: depName=zarf-dev/zarf
-      url: oci://ghcr.io/zarf-dev/packages/init:v0.45.0
+      url: oci://ghcr.io/zarf-dev/packages/init:v0.48.1
 
   - name: zarf-injector
     required: true
     import:
       # renovate: depName=zarf-dev/zarf
-      url: oci://ghcr.io/zarf-dev/packages/init:v0.45.0
+      url: oci://ghcr.io/zarf-dev/packages/init:v0.48.1
 
   - name: zarf-seed-registry
     required: true
     import:
       # renovate: depName=zarf-dev/zarf
-      url: oci://ghcr.io/zarf-dev/packages/init:v0.45.0
+      url: oci://ghcr.io/zarf-dev/packages/init:v0.48.1
 
   - name: zarf-registry
     required: true
     import:
       # renovate: depName=zarf-dev/zarf
-      url: oci://ghcr.io/zarf-dev/packages/init:v0.45.0
+      url: oci://ghcr.io/zarf-dev/packages/init:v0.48.1
 
   - name: zarf-agent
     required: true
     import:
       # renovate: depName=zarf-dev/zarf
-      url: oci://ghcr.io/zarf-dev/packages/init:v0.45.0
+      url: oci://ghcr.io/zarf-dev/packages/init:v0.48.1
 
   - name: git-server
     import:
       # renovate: depName=zarf-dev/zarf
-      url: oci://ghcr.io/zarf-dev/packages/init:v0.45.0
+      url: oci://ghcr.io/zarf-dev/packages/init:v0.48.1
