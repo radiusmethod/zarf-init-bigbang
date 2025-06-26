@@ -2,7 +2,7 @@
 
 ARCH:=amd64
 # renovate: depName=zarf-dev/zarf
-ZARF_VERSION:="0.48.1"
+ZARF_VERSION:="0.57.0"
 # renovate: depName=go-gitea/gitea
 GITEA_VERSION:="1.23.4"
 # renovate: depName=distribution/distribution
