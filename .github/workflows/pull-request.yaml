@@ -30,6 +30,9 @@ jobs:
 
       - name: Lint
         uses: ./.github/actions/tests
+        env:
+          REGISTRY1_USERNAME: ${{ secrets.REGISTRY1_USERNAME }}
+          REGISTRY1_PASSWORD: ${{ secrets.REGISTRY1_PASSWORD }}
 
       - name: Build image
         uses: ./.github/actions/build-image
