@@ -2,11 +2,11 @@
 
 ARCH:=amd64
 # renovate: depName=zarf-dev/zarf
-ZARF_VERSION:="0.48.1"
+ZARF_VERSION:="0.58.0"
 # renovate: depName=go-gitea/gitea
 GITEA_VERSION:="1.23.4"
 # renovate: depName=distribution/distribution
-REGISTRY_VERSION:="2.8.3"
+REGISTRY_VERSION:="3.0.0"
 
 ZARF_DIR:="zarf"
 BUILD_DIR:="build"
@@ -20,8 +20,8 @@ build:
 	--set AGENT_IMAGE_DOMAIN="registry1.dso.mil/" \
 	--set AGENT_IMAGE="ironbank/opensource/defenseunicorns/zarf/zarf-agent" \
 	--set AGENT_IMAGE_TAG=v$(ZARF_VERSION) \
-	--set INJECTOR_VERSION="2024-07-22" \
-	--set INJECTOR_AMD64_SHASUM="8463bfd66930a4b26c665b51f25e8a32ed5948068bae49987013c89173394478" \
+	--set INJECTOR_VERSION="2025-03-24" \
+	--set INJECTOR_AMD64_SHASUM="a78d66b9e2b00a22edd9b4e6432a4d934621e3757f09493b12f688c7c9baca93" \
 	--set GITEA_IMAGE=registry1.dso.mil/ironbank/opensource/go-gitea/gitea:v$(GITEA_VERSION)
 
 generate-key-pair:
