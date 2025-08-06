@@ -6,7 +6,7 @@ ZARF_VERSION:="0.48.1"
 # renovate: depName=go-gitea/gitea
 GITEA_VERSION:="1.23.4"
 # renovate: depName=distribution/distribution
-REGISTRY_VERSION:="2.8.3"
+REGISTRY_VERSION:="3.0.0"
 
 ZARF_DIR:="zarf"
 BUILD_DIR:="build"
