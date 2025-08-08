@@ -18,6 +18,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      id-token: write
 
     steps:
       - name: Checkout
@@ -41,10 +42,12 @@ jobs:
           REGISTRY1_USERNAME: ${{ secrets.REGISTRY1_USERNAME }}
           REGISTRY1_PASSWORD: ${{ secrets.REGISTRY1_PASSWORD }}
 
+      - name: ☁️ Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v4.2.1
+        with:
+          role-to-assume: arn:aws:iam::540894334194:role/github-actions/gh-ci-zarf-init-bigbang
+          aws-region: us-east-1
+
       - name: "Sign and Publish the image"
         run: |
           zarf package publish build/zarf-init-amd64-v${ZARF_VERSION}.tar.zst oci://ghcr.io/radiusmethod/zarf-init-bigbang --signing-key awskms:///alias/zarf-init-bigbang
-        env:
-          AWS_REGION: ${{ secrets.AWS_REGION }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID_GOV }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY_GOV }}
