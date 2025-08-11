@@ -9,7 +9,7 @@ on:
 
 env:
   # renovate: depName=zarf-dev/zarf
-  ZARF_VERSION: 0.59.0
+  ZARF_VERSION: 0.60.0
 
 jobs:
   build:
