@@ -43,7 +43,7 @@ jobs:
           REGISTRY1_PASSWORD: ${{ secrets.REGISTRY1_PASSWORD }}
 
       - name: ☁️ Configure AWS Credentials
-        uses: aws-actions/configure-aws-credentials@v4.3.1
+        uses: aws-actions/configure-aws-credentials@v5.1.0
         with:
           role-to-assume: arn:aws:iam::540894334194:role/github-actions/gh-ci-zarf-init-bigbang
           aws-region: us-east-1
