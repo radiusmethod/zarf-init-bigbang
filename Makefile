@@ -25,8 +25,6 @@ lint:
 	--set PROXY_IMAGE_DOMAIN="registry1.dso.mil/" \
 	--set PROXY_IMAGE="ironbank/opensource/alpine/socat/socat" \
 	--set PROXY_IMAGE_TAG=$(PROXY_VERSION) \
-	--set INJECTOR_VERSION="2025-03-24" \
-	--set INJECTOR_AMD64_SHASUM="a78d66b9e2b00a22edd9b4e6432a4d934621e3757f09493b12f688c7c9baca93" \
 	--set GITEA_IMAGE=registry1.dso.mil/ironbank/opensource/go-gitea/gitea:v$(GITEA_VERSION)
 
 build:
@@ -40,8 +38,6 @@ build:
 	--set PROXY_IMAGE_DOMAIN="registry1.dso.mil/" \
 	--set PROXY_IMAGE="ironbank/opensource/alpine/socat/socat" \
 	--set PROXY_IMAGE_TAG=$(PROXY_VERSION) \
-	--set INJECTOR_VERSION="2025-03-24" \
-	--set INJECTOR_AMD64_SHASUM="a78d66b9e2b00a22edd9b4e6432a4d934621e3757f09493b12f688c7c9baca93" \
 	--set GITEA_IMAGE=registry1.dso.mil/ironbank/opensource/go-gitea/gitea:v$(GITEA_VERSION)
 
 generate-key-pair:
