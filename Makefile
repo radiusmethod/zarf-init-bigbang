@@ -6,7 +6,7 @@ ZARF_VERSION:="0.60.0"
 # renovate: depName=go-gitea/gitea
 GITEA_VERSION:="1.26.2"
 # renovate: depName=distribution/distribution
-REGISTRY_VERSION:="3.0.0"
+REGISTRY_VERSION:="3.1.1"
 # renovate: depName=alpine/socat
 PROXY_VERSION:="1.8.0.3"
 
