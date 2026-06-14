@@ -7,6 +7,8 @@ ZARF_VERSION:="0.60.0"
 GITEA_VERSION:="1.25.4"
 # renovate: depName=distribution/distribution
 REGISTRY_VERSION:="3.0.0"
+# renovate: depName=alpine/socat
+PROXY_VERSION:="1.8.0.3"
 
 ZARF_DIR:="zarf"
 BUILD_DIR:="build"
@@ -20,6 +22,9 @@ lint:
 	--set AGENT_IMAGE_DOMAIN="registry1.dso.mil/" \
 	--set AGENT_IMAGE="ironbank/opensource/defenseunicorns/zarf/zarf-agent" \
 	--set AGENT_IMAGE_TAG=v$(ZARF_VERSION) \
+	--set PROXY_IMAGE_DOMAIN="registry1.dso.mil/" \
+	--set PROXY_IMAGE="ironbank/opensource/alpine/socat/socat" \
+	--set PROXY_IMAGE_TAG=$(PROXY_VERSION) \
 	--set INJECTOR_VERSION="2025-03-24" \
 	--set INJECTOR_AMD64_SHASUM="a78d66b9e2b00a22edd9b4e6432a4d934621e3757f09493b12f688c7c9baca93" \
 	--set GITEA_IMAGE=registry1.dso.mil/ironbank/opensource/go-gitea/gitea:v$(GITEA_VERSION)
@@ -32,6 +37,9 @@ build:
 	--set AGENT_IMAGE_DOMAIN="registry1.dso.mil/" \
 	--set AGENT_IMAGE="ironbank/opensource/defenseunicorns/zarf/zarf-agent" \
 	--set AGENT_IMAGE_TAG=v$(ZARF_VERSION) \
+	--set PROXY_IMAGE_DOMAIN="registry1.dso.mil/" \
+	--set PROXY_IMAGE="ironbank/opensource/alpine/socat/socat" \
+	--set PROXY_IMAGE_TAG=$(PROXY_VERSION) \
 	--set INJECTOR_VERSION="2025-03-24" \
 	--set INJECTOR_AMD64_SHASUM="a78d66b9e2b00a22edd9b4e6432a4d934621e3757f09493b12f688c7c9baca93" \
 	--set GITEA_IMAGE=registry1.dso.mil/ironbank/opensource/go-gitea/gitea:v$(GITEA_VERSION)
